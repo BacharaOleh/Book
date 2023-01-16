@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Book.Models.book>
+
+@{
+    ViewData["Title"] = "catalogue";
+}
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<h1>Katalog
+</h1>
+<body style="background-color: lightgreen;">
+
+</body>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        @item.title
+                    </div>
+                    <div class="card-body">
+                        <img src="~/images/@item.imgfile" height="150" /> <br />
+                        Cena:@item.price
+                    </div>
+                    <div class="card-footer">
+                        <a asp-controller="orders" asp-action="Create" asp-route-id="@item.Id">Kup</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
